@@ -97,6 +97,14 @@ export default {
   white-space: nowrap;
 }
 
+.card__image {
+  height: 100px;
+  user-select: none;
+  -webkit-user-drag: none;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
 .card__title {
   font-size: 1em;
   color: #e9e9e9;
@@ -108,10 +116,38 @@ export default {
   color: #878787;
 }
 
-.card__image {
-  height: 100px;
-  user-select: none;
-  -webkit-user-drag: none;
+.card__title,
+.card__subtitle,
+.card__heading {
+  border-radius: 0.125em;
+}
+
+.card__title,
+.card__subtitle,
+.card__heading,
+.card__chip {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.2s;
+}
+
+.card--loading .card__image {
+  opacity: 0;
+}
+
+.card--loading .card__title,
+.card--loading .card__subtitle,
+.card--loading .card__heading,
+.card--loading .card__chip {
+  color: transparent;
+  transition: color 0s;
+}
+
+.card--loading .card__title,
+.card--loading .card__subtitle,
+.card--loading .card__heading {
+  color: transparent;
+  background-color: #222;
 }
 
 .card__title:empty,
@@ -121,10 +157,11 @@ export default {
 .card--loading .card__subtitle,
 .card--loading .card__heading {
   color: transparent;
-  position: relative;
-  border-radius: 0.125em;
-  overflow: hidden;
   background-color: #222;
+}
+
+.card--loading .card__chip {
+  color: transparent;
 }
 
 .card__title:empty::before,
@@ -133,6 +170,7 @@ export default {
   content: "empty";
 }
 
+.card--loading .card__chip:after,
 .card--loading .card__heading:after,
 .card--loading .card__title:after,
 .card--loading .card__subtitle:after {
@@ -141,6 +179,7 @@ export default {
   width: 30px;
   height: 100%;
   left: 0;
+  top: 0;
   background: linear-gradient(
     90deg,
     transparent,
