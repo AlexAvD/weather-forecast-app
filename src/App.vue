@@ -175,7 +175,7 @@ export default {
     },
     icon: {
       type: "d",
-      src: "http://openweathermap.org/img/wn/"
+      src: "https://openweathermap.org/img/wn/"
     },
     forecasts: []
   })
